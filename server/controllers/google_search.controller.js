@@ -41,8 +41,8 @@ module.exports.search = (req, res, next) => {
 // }
 
 // module.exports.topnews = async (req, res, next) => {
-//     var query = "top news";
-//     resss = await axios.get(`https://api.avesapi.com/search?apikey=JDNNX73EZJMJ8ZN7QVDAG3D396C4&num=10&type=web&query=${query}&google_domain=google.co.in`);
+//     var query = req.body.location + " top news" ;
+//     resss = await axios.get(`https://api.avesapi.com/search?apikey=JDNNX73EZJMJ8ZN7QVDAG3D396C4&num=10&type=web&query=${query}&google_domain=google.co.bd`);
 //     //console.log(resss.data.result);
 //     res.send(resss.data.result);
 // }
@@ -50,23 +50,23 @@ module.exports.search = (req, res, next) => {
 
 
 module.exports.topnews = (req, res, next) => {
-  const options = {
-    method: 'GET',
-    url: 'https://bing-news-search1.p.rapidapi.com/news',
-    params: {safeSearch: 'Off', textFormat: 'Raw'},
-    headers: {
-      'X-BingApis-SDK': 'true',
-      'X-RapidAPI-Key': '2e8e7677e2mshd20a96bc96c2775p14c735jsn00457312b37c',
-      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
-      'X-Search-Location': req.body.locaton
-
-    }
-  };
-  
-  axios.request(options).then(function (response) {
-    console.log(response.data);
-  }).catch(function (error) {
-    console.error(error);
-  });
+    const options = {
+        method: 'GET',
+        url: 'https://bing-news-search1.p.rapidapi.com/news',
+        params: {textFormat: 'Raw', safeSearch: 'Off'},
+        headers: {
+          'X-BingApis-SDK': 'true',
+          'X-RapidAPI-Key': '3bd9d21b5fmsh3e875e10d6c3d80p120a75jsnb1d0354c27ed',
+          'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
+          'X-Search-Location': req.body.location
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+          //console.log(response.data);
+          res.send(response.data);
+      }).catch(function (error) {
+          console.error(error);
+      });
   
 }
