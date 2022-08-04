@@ -9,7 +9,7 @@ var spotifyApi = new SpotifyWebApi({
     clientSecret: '8cf2e0610f9f4f4896c9c367c8ec4d37',
     redirectUri: 'http://localhost:9000/callback'
 });
-const token = "BQB2sNEBDub9YgcyNGxMt4pwEE6a3OqQuRMh1cYrXzYayg2S6nMTeG9ktLykjjT-1Dz_tTh_M_g-8lzAaHgtJEkig_YtBgJICs3NNTyJLkUskDwbnVoXDEEi6UxO3u1PSNzLLV8C7_HUCakJ84Y-Juowp9IX4kj9i3qEQHEoB92_CiLcYs822kjhafX5tKcLtRLvdbGPpqatUa0IAMHwOxPiC-IYtAPvuUg6jenqu8CjndoKdZx9Q8hxX6aATQGie8cOkCpDpmH56R-UJb9G3V4GLJmFg-y9pyAwUDhy_5iw0Hogcf9sUQ9dkfeq-CUDUNX-QBq-vSVmVVNhdY2f";
+const token = "BQCJD8Bxan5TWZs-YNq3cYEaC4Z2HlLwsi9HAn0hpDK9x1nf3SG23iaFkQEAw_ey8HShOasX7M6OAsPbdzU2LfAGev7z5_ECgj7-VP7fRd0dgtvAi7PmRGmdkHi_W50-QRn_dP7e95bDCJPwxRFrfKBTX59XDh_0Xoc5-V0ZKBXdPILId9EleCahGsTM8AFg3NFIgboO-U1-anJXRTeh9YiVB5CL5W3gqXcr-nQJWUnO1YipPSPVkBpv1lFOIpvgyBtrm9sdx-y1JfThT8xabnx0sE6ICIhut039I51UNREjrhgDNgImAYarT-jhlI5lo5jA8WpbFrAV65x_SHrb"
 
 router.get('/', (req, res, next) => {
     // console.log("Worked")
@@ -76,11 +76,36 @@ const searchArtist = async () => {
 
 const searchTracks = async () => {
     const tracks = await spotifyApi.searchTracks('track:prem tumi artist:Tahsan')
+    console.log("tracks", tracks.body.tracks.items[0])
+    //console.log("tracks", tracks.body.tracks.items[1].external_urls)
+}
+
+const searchTracksByTrack = async () => {
+    const tracks = await spotifyApi.searchTracks('track:prem tumi')
     console.log("tracks", tracks.body.tracks.items[0].external_urls)
     //console.log("tracks", tracks.body.tracks.items[1].external_urls)
 }
 
+const searchTracksByArtist = async () => {
+    const tracks = await spotifyApi.searchTracks('artist:Tahsan')
+    console.log("tracks", tracks.body.tracks.items[0].external_urls)
+    console.log("tracks", tracks.body.tracks.items[2].external_urls)
+
+    console.log("size", tracks.body.tracks.items.length)
+}
+
+const palyMusic = async () => {
+    const tracks = await spotifyApi.searchTracks('artist:Tahsan')
+    console.log("tracks", tracks.body.tracks.items[0].external_urls)
+    console.log("tracks", tracks.body.tracks.items[2].external_urls)
+
+    console.log("size", tracks.body.tracks.items.length)
+}
+
+
 searchTracks()
+//searchTracksByArtist()
+
 
 app.use('/', router)
 app.listen(9000, () => {
