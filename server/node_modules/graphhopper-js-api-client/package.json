@@ -1,0 +1,30 @@
+{
+  "name": "graphhopper-js-api-client",
+  "version": "5.0.2",
+  "description": "A Javascript Client for GraphHopper",
+  "author": "GraphHopper Community",
+  "license": "Apache-2.0",
+  "main": "dist/graphhopper-client.js",
+  "scripts": {
+    "watch": "watchify src/main-template.js -o dist/graphhopper-client.js --debug --verbose",
+    "bundle": "browserify src/main-template.js -o dist/graphhopper-client.js",
+    "bundleDebug": "browserify src/main-template.js --debug -o dist/graphhopper-client.js",
+    "bundleProduction": "browserify -g uglifyify src/main-template.js | derequire > dist/graphhopper-client.js",
+    "test": "JASMINE_CONFIG_PATH=spec/jasmine.json jasmine"
+  },
+  "dependencies": {
+    "axios": "0.27.2"
+  },
+  "devDependencies": {
+    "browserify": "17.0.0",
+    "derequire": "2.0.6",
+    "jasmine": "3.4.0",
+    "jshint": "2.10.2",
+    "uglifyify": "5.0.2",
+    "watchify": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/graphhopper/directions-api-js-client.git"
+  }
+}
