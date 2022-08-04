@@ -16,15 +16,15 @@ module.exports.search = (req, res, next) => {
        })
 }
 
-module.exports.topnews = (req, res, next) => {
-    search.json({
-        q: "top news", 
-        location: "Dhaka"
-       }, (result) => {
-         console.log(result)
-         res.send(result);
-       })
-}
+// module.exports.topnews = (req, res, next) => {
+//     search.json({
+//         q: "top news", 
+//         location: "Dhaka"
+//        }, (result) => {
+//          console.log(result)
+//          res.send(result);
+//        })
+// }
 
 // const SerpApi = require('google-search-results-nodejs')
 // const search = new SerpApi.GoogleSearch("171d49d4a868951d4bb77f389d05328d3adf78bc6797d626cc191e8886da8f10")
@@ -46,3 +46,27 @@ module.exports.topnews = (req, res, next) => {
 //     //console.log(resss.data.result);
 //     res.send(resss.data.result);
 // }
+
+
+
+module.exports.topnews = (req, res, next) => {
+  const options = {
+    method: 'GET',
+    url: 'https://bing-news-search1.p.rapidapi.com/news',
+    params: {safeSearch: 'Off', textFormat: 'Raw'},
+    headers: {
+      'X-BingApis-SDK': 'true',
+      'X-RapidAPI-Key': '2e8e7677e2mshd20a96bc96c2775p14c735jsn00457312b37c',
+      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
+      'X-Search-Location': req.body.locaton
+
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
+  
+}
