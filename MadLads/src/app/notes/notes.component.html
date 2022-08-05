@@ -1,0 +1,12 @@
+<div class="container mt-3">
+    <div class="musiclist mt-5" *ngFor="let note of trs.notes">
+        <div class="row">
+            
+            <div class="col-7">
+                <p>{{remainingTime(note.lastUpdated)}} mins ago</p>
+                
+                <h4> {{note.note}} </h4>
+            </div>
+        </div>
+    </div>
+</div>

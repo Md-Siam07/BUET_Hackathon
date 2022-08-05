@@ -1,0 +1,17 @@
+
+
+<div class="container mt-3">
+    <input type="text" placeholder="prem tumi">
+    <div class="musiclist mt-5" *ngFor="let music of textRecognize.musics">
+        <div class="row">
+            <div class="col-5">
+                <img [src]="music.imageURL" height="200px" alt="" style="border: 1px solid black;">
+            </div>
+            <div class="col-7">
+                <h3>{{music.name}}</h3>
+                <h4>{{music.artist}}</h4>
+                <a [href]="music.track"> {{music.track}} </a>
+            </div>
+        </div>
+    </div>
+</div>

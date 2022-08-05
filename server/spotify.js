@@ -5,11 +5,11 @@ var SpotifyWebApi = require('spotify-web-api-node');
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
-    clientId: '3417f00383a24ca5ac5ded241854c06b',
-    clientSecret: '8cf2e0610f9f4f4896c9c367c8ec4d37',
-    redirectUri: 'http://localhost:9000/callback'
+    clientId: '8d0ef2120b5248b192ec07646b2db209',
+    clientSecret: '61b8bc30a74041508942ea03d1c8c354',
+    redirectUri: 'http://localhost:8000/callback'
 });
-const token = "BQCJD8Bxan5TWZs-YNq3cYEaC4Z2HlLwsi9HAn0hpDK9x1nf3SG23iaFkQEAw_ey8HShOasX7M6OAsPbdzU2LfAGev7z5_ECgj7-VP7fRd0dgtvAi7PmRGmdkHi_W50-QRn_dP7e95bDCJPwxRFrfKBTX59XDh_0Xoc5-V0ZKBXdPILId9EleCahGsTM8AFg3NFIgboO-U1-anJXRTeh9YiVB5CL5W3gqXcr-nQJWUnO1YipPSPVkBpv1lFOIpvgyBtrm9sdx-y1JfThT8xabnx0sE6ICIhut039I51UNREjrhgDNgImAYarT-jhlI5lo5jA8WpbFrAV65x_SHrb"
+const token = "BQAm-HxQgfl2KEg1brBLoAh7KsOCZ8J9b7Skyd3fNv_TORdFSH1MrkIhtmyrRvkaY7sSzDECAXlQ_aTlWlpNmYp9Xuvv5hbR6AreaTr-3ZjRbtygsag4ZT3JTvEkRYpWKVadiTLiHwGahBhgVG2o2mVK-DGLV7sy9ZcRkWEcBapC1jQ-fdkgRcsQlMhEY0J0KbZ9NtTQQyk2BSkQXndDUBJR8yB1BXkithme6_pnkhiOGif3AgAfGroXDXZMa97frmvEUkG9vcPH_c_Xqu9Utu-zcn5i0BQPfWjMJPYsxFDt-8dL6FVGJaAD_w3dZeGgXh6LwaEMKdlmookp"
 
 router.get('/', (req, res, next) => {
     // console.log("Worked")
@@ -76,7 +76,7 @@ const searchArtist = async () => {
 
 const searchTracks = async () => {
     const tracks = await spotifyApi.searchTracks('track:prem tumi artist:Tahsan')
-    console.log("tracks", tracks.body.tracks.items[0])
+    console.log("tracks", tracks.body.tracks.items[0].album.images)
     //console.log("tracks", tracks.body.tracks.items[1].external_urls)
 }
 
@@ -103,11 +103,11 @@ const palyMusic = async () => {
 }
 
 
-searchTracks()
+//searchTracks()
 //searchTracksByArtist()
 
 
 app.use('/', router)
-app.listen(9000, () => {
+app.listen(8000, () => {
     console.log('runnig')
 })

@@ -1,0 +1,19 @@
+<div class="row" >
+    <div class="col" *ngFor="let image of trs.images">
+      <a [href]="image.source"><img [src]="image.thumbnail" alt="Snow"></a>
+    </div>
+  </div>
+
+<div class="container mt-3">
+    <input type="text" placeholder="prem tumi">
+    <div class="musiclist mt-5" *ngFor="let search of trs.searches">
+        <div class="row">
+            
+            <div class="col-7">
+                <a [href]="search.link"><h4>{{search.title}}</h4></a>
+                
+                <p> {{search.snippet}} </p>
+            </div>
+        </div>
+    </div>
+</div>
