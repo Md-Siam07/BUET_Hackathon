@@ -1,0 +1,1 @@
+unSmartHome is a web based smart home tool which does voice detection, voice to text conversion and based on the conversion it suggests the top news around the area of the user, plays the song asked to be played, finds the best route of a user, and searching with voice commands.
